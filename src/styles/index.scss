@@ -1,0 +1,28 @@
+@import './mixin.scss';
+page {
+  background: $bc;
+  @include allcover();
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.button-active {
+  position: relative;
+  &:before {
+    @include click(#000);
+  }
+  &:active::before {
+    opacity: 0.1;
+  }
+}
+
+/* this rule will be remove */
+
+* {
+  transition: width 2s;
+  -moz-transition: width 2s;
+  -webkit-transition: width 2s;
+  -o-transition: width 2s;
+}
