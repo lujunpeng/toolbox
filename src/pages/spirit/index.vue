@@ -1,7 +1,14 @@
 <template>
   <div class="spirit">
-    <span>水平：{{ x }}</span>
-    <span>垂直：{{ y }}</span>
+    <div class="spirit-data">
+      <span class="spirit-data-item">{{ x }}°
+        <span>水平</span>
+      </span>
+      <span class="spirit-data-item">{{ y }}°
+        <span>垂直</span>
+      </span>
+    </div>
+
   </div>
 </template>
 
@@ -18,9 +25,10 @@ export default {
   },
   methods: {
     onAccelerometerChange() {
+      const that = this
       wx.onAccelerometerChange(function(res) {
-        this.x = res.x
-        this.y = res.y
+        that.x = res.x
+        that.y = res.y
       })
     }
   },
@@ -36,5 +44,19 @@ export default {
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss">
-
+@import '../../styles/mixin.scss';
+.spirit {
+  height: 100%;
+  overflow: hidden;
+  .spirit-data {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 50px;
+    .spirit-data-item {
+      font-size: 16px;
+      color: #fff;
+    }
+  }
+}
 </style>
